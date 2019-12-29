@@ -12,9 +12,12 @@ module.exports = {
       {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
       },
     ],
   },
