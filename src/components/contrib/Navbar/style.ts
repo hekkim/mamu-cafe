@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-import { Colors } from 'components/styles/colors';
-import { Size, Weight } from 'components/styles/typograhpy';
+import { Colors } from 'styles/colors';
+import { Size, Weight } from 'styles/typograhpy';
+import { flexStyle } from 'styles/flex';
 
 export const NavbarTitle = styled.h1`
   font-size: ${Size.Header};
@@ -10,6 +11,7 @@ export const NavbarTitle = styled.h1`
 
 export const NavbarActions = styled.div`
   margin-left: auto;
+  height: 100%;
 `;
 
 export const NavbarButton = styled.button`
@@ -18,7 +20,7 @@ export const NavbarButton = styled.button`
 `;
 
 export const Navbar = styled.nav`
-  display: flex;
+  ${flexStyle({ alignItems: 'center' })}
   position: fixed;
   top: 0;
   left: 0;

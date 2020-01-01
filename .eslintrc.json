@@ -66,6 +66,7 @@
     "no-underscore-dangle": "off",
     "object-curly-spacing": "error",
     "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
     "react/sort-prop-types": [
       "error",
       {
