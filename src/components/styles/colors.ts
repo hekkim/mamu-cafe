@@ -4,7 +4,7 @@
  * @see https://coolors.co/c9cba3-ffe1a8-e26d5c-723d46-472d30
  * @see https://api.flutter.dev/flutter/material/Colors-class.html
  * */
-export const Colors: Record<string, string> = {
+export const Colors = {
   Green: '#c9cba3', // Dark vanilla
   Yellow: '#ffe1a8', // Navajo white
   Red: '#e26d5c', // Terra cotta
