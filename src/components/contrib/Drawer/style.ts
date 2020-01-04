@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
+import { Button } from 'components/common';
 import { Colors } from 'styles/colors';
-import { Size, Weight } from 'styles/typograhpy';
 import { mediaSizes, respondMore } from 'styles/media';
+import { Transition } from 'styles/transition';
 
 export type DrawerProps = {
   isExpanded: boolean;
@@ -12,38 +13,38 @@ export const Drawer = styled.aside<DrawerProps>`
   flex: 0 0 8rem;
   background-color: ${Colors.Maroon};
   height: 100%;
+  transition: ${Transition.Slow};
 
-  ${respondMore(mediaSizes.tablet)`
-    flex-basis: ${p => (p.isExpanded ? 8 : 24)}rem;
-  `}
+  ${p =>
+    respondMore(mediaSizes.tablet)(`
+    flex-basis: ${p.isExpanded ? 24 : 8}rem;
+  `)}
 `;
 
-export const DrawerButton = styled.button`
+export const DrawerButton = styled(Button)`
   display: block;
-  border: 0;
   width: 100%;
-  font-size: ${Size.Body};
-  font-weight: ${Weight.Medium};
-  color: ${Colors.Grey100};
+  border-radius: 0;
   text-align: center;
-  background-color: transparent;
-  transition: 225ms;
+  transition: ${Transition.Fast};
 
   &:hover {
     color: ${Colors.Grey200};
   }
 
-  ${respondMore(mediaSizes.tablet)`
+  ${respondMore(mediaSizes.tablet)(`
     text-align: left;
-  `}
+  `)}
 `;
+DrawerButton.defaultProps = {
+  theme: 'maroon',
+};
 
 export const DrawerToggler = styled(DrawerButton)`
   display: none;
-  background-color: ${Colors.MaroonDark};
 
-  ${respondMore(mediaSizes.tablet)`
+  ${respondMore(mediaSizes.tablet)(`
     display: block;
     text-align: center;
-  `}
+  `)}
 `;
