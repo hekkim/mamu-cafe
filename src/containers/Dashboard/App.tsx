@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import routes from 'constants/routes';
@@ -11,6 +12,10 @@ import * as Styled from './style';
 const Dashboard = observer(() => {
   const authStore = useStore('auth');
 
+  if (!authStore.auth) {
+    return <Redirect to={routes.login} />;
+  }
+
   return (
     <Styled.DashboardContainer>
       <Navbar title="MAMÜ">
@@ -21,7 +26,7 @@ const Dashboard = observer(() => {
           <Drawer.Button to={routes.order}>Order</Drawer.Button>
           <Drawer.Button to={routes.menu}>Menu</Drawer.Button>
         </Drawer>
-        {/* <DashboardRouter /> */}
+        <DashboardRouter />
       </Styled.DashboardBody>
     </Styled.DashboardContainer>
   );

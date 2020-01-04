@@ -12,7 +12,7 @@ const Login = observer(() => {
   const authStore = useStore('auth');
 
   if (authStore.auth) {
-    return <Redirect to={routes.menu} />;
+    return <Redirect to={routes.dashboard} />;
   }
 
   return (
