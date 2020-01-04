@@ -8,7 +8,7 @@ type ButtonTheme = 'green' | 'yellow' | 'red' | 'maroon' | 'brown';
 
 type ButtonSize = 'small' | 'normal';
 
-export type ButtonProps = {
+type ButtonProps = {
   theme?: ButtonTheme;
   size?: ButtonSize;
 };
@@ -100,7 +100,7 @@ const getButtonSize = (size?: ButtonSize) => {
   }
 };
 
-export const Button = styled.button<ButtonProps>`
+const Button = styled.button<ButtonProps>`
   ${p => getButtonTheme(p.theme)}
   ${p => getButtonSize(p.size)}
 
@@ -114,3 +114,5 @@ export const Button = styled.button<ButtonProps>`
     cursor: not-allowed;
   }
 `;
+
+export default Button;
