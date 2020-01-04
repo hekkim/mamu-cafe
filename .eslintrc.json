@@ -26,6 +26,7 @@
   },
   "rules": {
     "prettier/prettier": "error",
+    "func-names": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -66,6 +67,7 @@
     "no-underscore-dangle": "off",
     "object-curly-spacing": "error",
     "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/sort-prop-types": [
       "error",

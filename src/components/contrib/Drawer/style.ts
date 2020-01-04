@@ -1,15 +1,18 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { Button } from 'components/common';
+import { buttonStyle } from 'components/common/Button';
 import { Colors } from 'styles/colors';
 import { mediaSizes, respondMore } from 'styles/media';
 import { Transition } from 'styles/transition';
+import { flexStyle } from 'styles/flex';
 
 export type DrawerProps = {
   isExpanded: boolean;
 };
 
 export const Drawer = styled.aside<DrawerProps>`
+  ${flexStyle({ flexDirection: 'column' })}
   flex: 0 0 8rem;
   background-color: ${Colors.Maroon};
   height: 100%;
@@ -21,7 +24,8 @@ export const Drawer = styled.aside<DrawerProps>`
   `)}
 `;
 
-export const DrawerButton = styled(Button)`
+export const DrawerButton = styled(Link)`
+  ${buttonStyle}
   display: block;
   width: 100%;
   border-radius: 0;
@@ -41,6 +45,7 @@ DrawerButton.defaultProps = {
 };
 
 export const DrawerToggler = styled(DrawerButton)`
+  margin-top: auto;
   display: none;
 
   ${respondMore(mediaSizes.tablet)(`
