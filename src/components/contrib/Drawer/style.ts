@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Colors } from 'styles/colors';
 import { Size, Weight } from 'styles/typograhpy';
 import { mediaSizes, respondMore } from 'styles/media';
+import { Transition } from 'styles/transition';
 
 export type DrawerProps = {
   isExpanded: boolean;
@@ -27,7 +28,7 @@ export const DrawerButton = styled.button`
   color: ${Colors.Grey100};
   text-align: center;
   background-color: transparent;
-  transition: 225ms;
+  transition: ${Transition.Fast};
 
   &:hover {
     color: ${Colors.Grey200};

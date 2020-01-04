@@ -6,8 +6,14 @@
  * */
 export const Colors = {
   Green: '#c9cba3', // Dark vanilla
+  GreenDark: '#a5a786',
+  GreenDarker: '#808268',
   Yellow: '#ffe1a8', // Navajo white
+  YellowDark: '#d1b98a',
+  YellowDarker: '#a3906b',
   Red: '#e26d5c', // Terra cotta
+  RedDark: '#B95A4C',
+  RedDarker: '#90463B',
   Maroon: '#723d46', // Roast coffee
   MaroonDark: '#5E323A',
   MaroonDarker: '#49272D',
@@ -26,4 +32,5 @@ export const Colors = {
 
   Line: '#616161',
   Text: '#212121',
+  WhiteText: '#f5f5f5',
 };
