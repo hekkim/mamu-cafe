@@ -6,7 +6,7 @@ export default {
   title: 'Navbar',
 };
 
-export const withTitle = () => (
+export const navbar = () => (
   <Navbar title="MAMÜ">
     <Navbar.Button>Toggle</Navbar.Button>
   </Navbar>
