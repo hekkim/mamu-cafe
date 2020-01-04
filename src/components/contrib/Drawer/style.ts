@@ -11,6 +11,7 @@ export type DrawerProps = {
 export const Drawer = styled.aside<DrawerProps>`
   flex: 0 0 8rem;
   background-color: ${Colors.Maroon};
+  height: 100%;
 
   ${respondMore(mediaSizes.tablet)`
     flex-basis: ${p => (p.isExpanded ? 8 : 24)}rem;
@@ -19,15 +20,22 @@ export const Drawer = styled.aside<DrawerProps>`
 
 export const DrawerButton = styled.button`
   display: block;
+  border: 0;
+  width: 100%;
   font-size: ${Size.Body};
   font-weight: ${Weight.Medium};
   color: ${Colors.Grey100};
+  text-align: center;
   background-color: transparent;
   transition: 225ms;
 
   &:hover {
     color: ${Colors.Grey200};
   }
+
+  ${respondMore(mediaSizes.tablet)`
+    text-align: left;
+  `}
 `;
 
 export const DrawerToggler = styled(DrawerButton)`
@@ -36,5 +44,6 @@ export const DrawerToggler = styled(DrawerButton)`
 
   ${respondMore(mediaSizes.tablet)`
     display: block;
+    text-align: center;
   `}
 `;

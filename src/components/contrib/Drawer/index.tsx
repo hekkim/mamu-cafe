@@ -2,7 +2,11 @@ import React, { FC, useState, useCallback } from 'react';
 
 import * as Styled from './style';
 
-const Drawer: FC = ({ children }) => {
+type DrawerType = FC & {
+  Button: typeof Styled.DrawerButton;
+};
+
+const Drawer: DrawerType = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const onToggle = useCallback(() => setIsExpanded(prev => !prev), []);
@@ -10,9 +14,12 @@ const Drawer: FC = ({ children }) => {
   return (
     <Styled.Drawer isExpanded={isExpanded}>
       {children}
-      <Styled.DrawerToggler onClick={onToggle}>&lt;</Styled.DrawerToggler>
+      <Styled.DrawerToggler onClick={onToggle}>
+        {isExpanded ? '<' : '>'}
+      </Styled.DrawerToggler>
     </Styled.Drawer>
   );
 };
+Drawer.Button = Styled.DrawerButton;
 
 export default Drawer;
