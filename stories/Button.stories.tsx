@@ -24,7 +24,7 @@ export const button = () => (
       <Button theme="brown">Brown button</Button>
     </div>
     <div>
-      <Button disabled>Brown button</Button>
+      <Button disabled>Disabled button</Button>
     </div>
   </>
 );
