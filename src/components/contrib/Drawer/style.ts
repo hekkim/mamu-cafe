@@ -5,12 +5,14 @@ import { buttonStyle } from 'components/common/Button';
 import { Colors } from 'styles/colors';
 import { mediaSizes, respondMore } from 'styles/media';
 import { Transition } from 'styles/transition';
+import { flexStyle } from 'styles/flex';
 
 export type DrawerProps = {
   isExpanded: boolean;
 };
 
 export const Drawer = styled.aside<DrawerProps>`
+  ${flexStyle({ flexDirection: 'column' })}
   flex: 0 0 8rem;
   background-color: ${Colors.Maroon};
   height: 100%;
