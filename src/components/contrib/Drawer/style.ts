@@ -43,6 +43,7 @@ DrawerButton.defaultProps = {
 };
 
 export const DrawerToggler = styled(DrawerButton)`
+  margin-top: auto;
   display: none;
 
   ${respondMore(mediaSizes.tablet)(`
