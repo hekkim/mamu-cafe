@@ -13,9 +13,11 @@ export const Drawer = styled.aside<DrawerProps>`
   flex: 0 0 8rem;
   background-color: ${Colors.Maroon};
   height: 100%;
+  transition: ${Transition.Slow};
 
-  ${respondMore(mediaSizes.tablet)(`
-    flex-basis: ${p => (p.isExpanded ? '8rem' : '24rem')};
+  ${p =>
+    respondMore(mediaSizes.tablet)(`
+    flex-basis: ${p.isExpanded ? 24 : 8}rem;
   `)}
 `;
 
@@ -30,9 +32,9 @@ export const DrawerButton = styled(Button)`
     color: ${Colors.Grey200};
   }
 
-  ${respondMore(mediaSizes.tablet)`
+  ${respondMore(mediaSizes.tablet)(`
     text-align: left;
-  `}
+  `)}
 `;
 DrawerButton.defaultProps = {
   theme: 'maroon',
@@ -41,8 +43,8 @@ DrawerButton.defaultProps = {
 export const DrawerToggler = styled(DrawerButton)`
   display: none;
 
-  ${respondMore(mediaSizes.tablet)`
+  ${respondMore(mediaSizes.tablet)(`
     display: block;
     text-align: center;
-  `}
+  `)}
 `;
