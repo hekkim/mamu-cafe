@@ -109,8 +109,8 @@ export const Button = styled.button<ButtonProps>`
   font-weight: ${Weight.Medium};
   transition: ${Transition.Fast};
 
-  &:disable {
+  &:disabled {
     background-color: ${Colors.Disable};
-    cursor: disable;
+    cursor: not-allowed;
   }
 `;

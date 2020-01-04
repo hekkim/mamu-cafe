@@ -21,7 +21,10 @@ export const button = () => (
       <Button theme="maroon">Maroon button</Button>
     </div>
     <div>
-      <Button theme="brwon">Brown button</Button>
+      <Button theme="brown">Brown button</Button>
+    </div>
+    <div>
+      <Button disabled>Brown button</Button>
     </div>
   </>
 );
