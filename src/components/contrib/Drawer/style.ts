@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { Button } from 'components/common';
+import { buttonStyle } from 'components/common/Button';
 import { Colors } from 'styles/colors';
 import { mediaSizes, respondMore } from 'styles/media';
 import { Transition } from 'styles/transition';
@@ -21,7 +22,8 @@ export const Drawer = styled.aside<DrawerProps>`
   `)}
 `;
 
-export const DrawerButton = styled(Button)`
+export const DrawerButton = styled(Link)`
+  ${buttonStyle}
   display: block;
   width: 100%;
   border-radius: 0;

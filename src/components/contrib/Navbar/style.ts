@@ -5,6 +5,8 @@ import { Colors } from 'styles/colors';
 import { Size, Weight } from 'styles/typograhpy';
 import { flexStyle } from 'styles/flex';
 
+export const NAVBAR_HEIGHT = '5rem';
+
 export const NavbarTitle = styled.h1`
   padding: 1rem 1.6rem;
   font-size: ${Size.Header};
@@ -29,7 +31,7 @@ export const Navbar = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  height: 5rem;
+  height: ${NAVBAR_HEIGHT};
   background-color: ${Colors.Brown};
   color: ${Colors.WhiteText};
 `;

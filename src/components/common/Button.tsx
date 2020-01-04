@@ -100,7 +100,7 @@ const getButtonSize = (size?: ButtonSize) => {
   }
 };
 
-const Button = styled.button<ButtonProps>`
+export const buttonStyle = css<ButtonProps>`
   ${p => getButtonTheme(p.theme)}
   ${p => getButtonSize(p.size)}
 
@@ -113,6 +113,10 @@ const Button = styled.button<ButtonProps>`
     background-color: ${Colors.Disable};
     cursor: not-allowed;
   }
+`;
+
+const Button = styled.button<ButtonProps>`
+  ${buttonStyle}
 `;
 
 export default Button;

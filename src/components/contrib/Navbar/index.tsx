@@ -4,7 +4,6 @@ import * as Styled from './style';
 
 type Props = {
   title: string;
-  children: typeof Styled.NavbarButton;
 };
 
 type NavbarType = FC<Props> & {

@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Login } from 'containers';
 import { Loading } from 'components/common';
+import { AuthRoute } from 'components/contrib';
+import { Dashboard, Login } from 'containers';
 import routes from 'constants/routes';
 
 const RootRouter = () => {
@@ -10,6 +11,7 @@ const RootRouter = () => {
     <Suspense fallback={<Loading />}>
       <Router>
         <Switch>
+          <AuthRoute path={routes.dashboard} component={Dashboard} />
           <Route path={routes.login} component={Login} />
         </Switch>
       </Router>

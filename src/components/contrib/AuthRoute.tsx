@@ -3,15 +3,9 @@ import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import routes from 'constants/routes';
-import { ActionStatus } from 'types/ActionStatus';
+import { useStore } from 'store';
 
-// import ChatNotification from './ChatNotification';
-
-const mapState = (state: StoreState) => ({
-  auth: state.auth,
-});
-
-type Props = ReturnType<typeof mapState> & RouteProps;
+type Props = RouteProps;
 
 const AuthRoute: FC<Props> = observer(
   ({ component: Component, ...routeProps }) => {
@@ -21,9 +15,7 @@ const AuthRoute: FC<Props> = observer(
       <Route
         {...routeProps}
         render={props =>
-          authStore.status === ActionStatus.Success &&
-          authStore.user &&
-          Component ? (
+          authStore.auth && Component ? (
             <Component {...props} />
           ) : (
             <Redirect
