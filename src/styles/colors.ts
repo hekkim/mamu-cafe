@@ -31,6 +31,7 @@ export const Colors = {
   Grey900: '#212121',
 
   Line: '#616161',
+  Disable: '#616161',
   Text: '#212121',
   WhiteText: '#f5f5f5',
 };

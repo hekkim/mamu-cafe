@@ -14,7 +14,7 @@ const Drawer: DrawerType = ({ children }) => {
   return (
     <Styled.Drawer isExpanded={isExpanded}>
       {children}
-      <Styled.DrawerToggler onClick={onToggle}>
+      <Styled.DrawerToggler theme="brown" onClick={onToggle}>
         {isExpanded ? '<' : '>'}
       </Styled.DrawerToggler>
     </Styled.Drawer>

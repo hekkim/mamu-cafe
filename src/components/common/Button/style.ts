@@ -9,11 +9,11 @@ type ButtonTheme = 'green' | 'yellow' | 'red' | 'maroon' | 'brown';
 type ButtonSize = 'small' | 'normal';
 
 export type ButtonProps = {
-  theme: ButtonTheme;
-  size: ButtonSize;
+  theme?: ButtonTheme;
+  size?: ButtonSize;
 };
 
-const getButtonTheme = (theme: ButtonTheme) => {
+const getButtonTheme = (theme?: ButtonTheme) => {
   switch (theme) {
     case 'green':
       return css`
@@ -84,7 +84,7 @@ const getButtonTheme = (theme: ButtonTheme) => {
   }
 };
 
-const getButtonSize = (size: ButtonSize) => {
+const getButtonSize = (size?: ButtonSize) => {
   switch (size) {
     case 'small':
       return css`
