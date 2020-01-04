@@ -46,7 +46,10 @@ export function useStore<K extends StoreKeys>(
   }
 
   if (Array.isArray(storeName)) {
-    return _.filter(store, (__, key) => storeName.includes(key as K));
+    return _.filter(store, (__, key) => storeName.includes(key as K)) as Pick<
+      RootStore,
+      K
+    >;
   }
 
   return store[storeName];

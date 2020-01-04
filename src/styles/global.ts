@@ -1,4 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import 'sanitize.css';
+import 'sanitize.css/typography.css';
+
+import { Size } from './typograhpy';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -7,11 +11,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body,
-  #root {
+  #app {
     width: 100vw;
     height: 100vh;
     font-family: sans-serif;
-    font-size: 10px; // It helps to use "rem"
+  }
+
+  body {
+    font-size: 10px;
+  }
+
+  #app {
+    font-size: ${Size.Body};
   }
 
   a {

@@ -19,7 +19,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules\/(?!sanitize.css)/,
+        loader: ['style-loader', 'css-loader'],
+      }
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
   plugins: [
     new HtmlWebpackPlugin({

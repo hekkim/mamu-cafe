@@ -15,6 +15,7 @@ class AuthStore extends ApiStore {
   @action.bound
   signIn = flow(function*(this: AuthStore) {
     this.auth = 'something';
+    yield 1;
   });
 
   @action.bound
