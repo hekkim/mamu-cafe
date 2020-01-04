@@ -5,7 +5,9 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, './public'),
-    filename: 'index.bundle.js',
+    chunkFilename: '[name].bundle.js',
+    filename: '[name].bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -23,12 +25,12 @@ module.exports = {
         test: /\.css$/,
         exclude: /node_modules\/(?!sanitize.css)/,
         loader: ['style-loader', 'css-loader'],
-      }
+      },
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -36,6 +38,8 @@ module.exports = {
     }),
   ],
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: '/'
+    },
   },
 };
