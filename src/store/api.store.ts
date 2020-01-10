@@ -22,8 +22,9 @@ class ApiStore {
   }
 
   @action.bound
-  onFailure(): void {
+  onFailure(error?: string): void {
     this.status = ActionStatus.Failure;
+    this.error = error;
   }
 }
 
