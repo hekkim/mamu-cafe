@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Redirect } from 'react-router';
 
@@ -10,6 +10,10 @@ import { LoginContainer } from './style';
 
 const Login = observer(() => {
   const authStore = useStore('auth');
+
+  useEffect(() => {
+    authStore.loadOAuth();
+  }, []);
 
   if (authStore.auth) {
     return <Redirect to={routes.dashboard} />;

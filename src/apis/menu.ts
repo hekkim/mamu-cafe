@@ -3,21 +3,21 @@ import axios from 'axios';
 import { Merchant } from 'types/Merchant';
 import { Menu } from 'types/Menu';
 
+const BASE_URL = '/api/v1/merchants/';
+
 export const getMenuList = (merchantId: Merchant['id']) =>
-  axios
-    .get(`/api/v1/merchants/${merchantId}/menus/`)
-    .then(response => response.data);
+  axios.get(`${BASE_URL}${merchantId}/menus/`).then(response => response.data);
 
 export type PostMenuParams = Pick<Menu, 'name' | 'price' | 'currency'>;
 
 export const postMenu = (merchantId: Merchant['id'], params: PostMenuParams) =>
   axios
-    .post(`/api/v1/merchants/${merchantId}/menus/`, params)
+    .post(`${BASE_URL}${merchantId}/menus/`, params)
     .then(response => response.data);
 
 export const getMenu = (merchantId: Merchant['id'], menuId: Menu['id']) =>
   axios
-    .get(`/api/v1/merchants/${merchantId}/menus/${menuId}/`)
+    .get(`${BASE_URL}${merchantId}/menus/${menuId}/`)
     .then(response => response.data);
 
 export type PatchMenuParams = PostMenuParams;
@@ -28,5 +28,5 @@ export const patchMenu = (
   params: PatchMenuParams
 ) =>
   axios
-    .patch(`/api/v1/merchants/${merchantId}/menus/${menuId}/`, params)
+    .patch(`${BASE_URL}${merchantId}/menus/${menuId}/`, params)
     .then(response => response.data);

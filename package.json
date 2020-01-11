@@ -30,6 +30,7 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@types/axios": "^0.14.0",
+    "@types/gapi.auth2": "^0.0.51",
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
