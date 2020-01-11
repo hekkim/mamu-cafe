@@ -2,7 +2,8 @@
   "name": "mamu-cafe",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --config ./config/webpack.dev.js",
+    "build": "webpack --config ./config/webpack.prod.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -61,10 +62,12 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-prettier": "^1.1.2",
     "stylelint-processor-styled-components": "^1.9.0",
+    "terser-webpack-plugin": "^2.3.2",
     "typescript": "^3.7.4",
     "typescript-styled-plugin": "^0.15.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2"
   }
 }

@@ -44,7 +44,6 @@ class AuthStore extends ApiStore {
     script.onload = () => {
       this.oAuth.scriptStatus = ActionStatus.Success;
 
-      console.log(process.env.OAUTH_CLIENT_ID);
       gapi.load('client:auth2', () => {
         gapi.auth2
           .init({
@@ -69,15 +68,19 @@ class AuthStore extends ApiStore {
 
   @action.bound
   signIn() {
-    if (this.oAuth.authInst) {
-      this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
-    }
+    // if (this.oAuth.authInst) {
+    //   this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
+    // }
+
+    // Temp
+    this.initAuth();
   }
 
   @action.bound
   initAuth(auth: gapi.auth2.GoogleUser) {
     this.status = ActionStatus.Success;
-    initApiConfig(auth.getAuthResponse().access_token);
+    this.auth = 'temp'; // auth.getAuthResponse();
+    // initApiConfig(auth.getAuthResponse().access_token);
   }
 
   @action.bound
