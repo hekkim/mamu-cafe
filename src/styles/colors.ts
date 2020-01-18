@@ -29,6 +29,8 @@ export const Colors = {
   Grey700: '#616161',
   Grey800: '#424242',
   Grey900: '#212121',
+  Black: '#000000',
+  White: '#ffffff',
 
   Line: '#616161',
   Disable: '#616161',
