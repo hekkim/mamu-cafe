@@ -13,6 +13,7 @@ const OrderContainer = styled.div`
 const OrderButton = styled(Button)`
   flex: 0 0 auto;
   padding: 2rem;
+  border: 0;
   text-align: center;
 `;
 

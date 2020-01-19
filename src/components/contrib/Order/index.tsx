@@ -8,9 +8,6 @@ const Order = ({ order }) => (
     <Styled.OrderButton theme="green" onClick={() => console.log(order)}>
       Done
     </Styled.OrderButton>
-    <Styled.OrderButton theme="red" onClick={() => console.log(order)}>
-      Cancel
-    </Styled.OrderButton>
   </Styled.OrderContainer>
 );
 
