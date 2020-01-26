@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
@@ -10,9 +10,19 @@ import DashboardRouter from './DashboardRouter';
 import * as Styled from './style';
 
 const Dashboard = observer(() => {
-  const authStore = useStore('auth');
+  const { auth: authStore, merchant: merchantStore } = useStore([
+    'auth',
+    'merchant',
+  ]);
 
-  console.log(authStore.auth);
+  useEffect(() => {
+    if (!authStore.auth) {
+      return;
+    }
+
+    merchantStore.getMerchant();
+  }, [authStore.auth]);
+
   if (!authStore.auth) {
     return <Redirect to={routes.login} />;
   }

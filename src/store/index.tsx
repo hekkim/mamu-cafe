@@ -52,10 +52,14 @@ export function useStore<K extends StoreKeys>(
   }
 
   if (Array.isArray(storeName)) {
-    return _.filter(store, (__, key) => storeName.includes(key as K)) as Pick<
-      RootStore,
-      K
-    >;
+    const result = _.reduce(
+      store,
+      (acc, subStore, key) =>
+        storeName.includes(key as K) ? { ...acc, [key]: subStore } : acc,
+      {} as Pick<RootStore, K>
+    );
+
+    return result;
   }
 
   return store[storeName];

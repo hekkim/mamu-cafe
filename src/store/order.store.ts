@@ -1,7 +1,7 @@
 import { action, flow, observable } from 'mobx';
 
 import { getOrderList } from 'apis/order';
-import { Order } from 'types/order';
+import { Order } from 'types/Order';
 import { ActionStatus } from 'types/ActionStatus';
 
 import ApiStore from './api.store';
@@ -14,6 +14,10 @@ class OrderStore extends ApiStore {
   @action.bound
   pollOrderList = flow(function*(this: OrderStore) {
     const merchantId = this.rootStore.merchant.merchant?.id;
+    if (!merchantId) {
+      return;
+    }
+
     try {
       this.onRequest();
       const { results } = yield getOrderList({ merchant_id: merchantId });
