@@ -12,6 +12,7 @@ import * as Styled from './style';
 const Dashboard = observer(() => {
   const authStore = useStore('auth');
 
+  console.log(authStore.auth);
   if (!authStore.auth) {
     return <Redirect to={routes.login} />;
   }

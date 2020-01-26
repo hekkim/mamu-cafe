@@ -6,15 +6,8 @@ import { ActionStatus } from 'types/ActionStatus';
 
 import ApiStore from './api.store';
 
-import { RootStore } from './index';
-
 class MenuStore extends ApiStore {
   @observable menuList: Menu[] = [];
-
-  constructor(rootStore: RootStore) {
-    super();
-    this.rootStore = rootStore;
-  }
 
   @action.bound
   getMenuList = flow(function*(this: MenuStore) {
@@ -24,7 +17,7 @@ class MenuStore extends ApiStore {
 
     try {
       this.onRequest();
-      const { id: merchantId } = this.rootStore.merchant.self;
+      const { id: merchantId } = this.rootStore.merchant;
       this.menuList = yield getMenuList(merchantId);
 
       this.onSuccess();

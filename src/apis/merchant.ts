@@ -2,8 +2,8 @@ import axios from 'axios';
 
 import { Merchant } from 'types/Merchant';
 
-export const getMerchant = (merchantId: Merchant['id']) =>
-  axios.get(`/api/v1/merchants/${merchantId}/`).then(response => response.data);
+export const getMerchant = () =>
+  axios.get<Merchant>('/api/v1/merchants/').then(response => response.data);
 
 export type PatchMerchantParams = Partial<
   Pick<

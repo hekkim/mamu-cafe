@@ -3,9 +3,13 @@ import React, { createContext, FC, useContext } from 'react';
 import { useLocalStore } from 'mobx-react';
 
 import AuthStore from './auth.store';
+import OrderStore from './order.store';
+import MerchantStore from './merchant.store';
 
 export type RootStore = {
   auth: AuthStore;
+  merchant: MerchantStore;
+  order: OrderStore;
 };
 
 type StoreKeys = keyof RootStore;
@@ -16,6 +20,8 @@ const initRootStore = (): RootStore => {
   const rootStore: RootStore = {} as RootStore;
 
   rootStore.auth = new AuthStore(rootStore);
+  rootStore.merchant = new MerchantStore(rootStore);
+  rootStore.order = new OrderStore(rootStore);
 
   return rootStore;
 };

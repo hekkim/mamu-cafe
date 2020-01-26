@@ -9,7 +9,11 @@ class ApiStore {
 
   @observable error?: string;
 
-  rootStore?: RootStore;
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+  }
 
   @action.bound
   onRequest(): void {
