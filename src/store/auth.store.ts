@@ -20,7 +20,7 @@ type OAuth = {
 };
 
 class AuthStore extends ApiStore {
-  @observable auth: gapi.auth2.GoogleUser | null = null;
+  @observable auth: gapi.auth2.AuthResponse | null = null;
 
   @observable oAuth: OAuth = {
     scriptStatus: ActionStatus.Initial,
@@ -68,19 +68,16 @@ class AuthStore extends ApiStore {
 
   @action.bound
   signIn() {
-    // if (this.oAuth.authInst) {
-    //   this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
-    // }
-
-    // Temp
-    this.initAuth();
+    if (this.oAuth.authInst) {
+      this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
+    }
   }
 
   @action.bound
   initAuth(auth: gapi.auth2.GoogleUser) {
     this.status = ActionStatus.Success;
-    this.auth = 'temp'; // auth.getAuthResponse();
-    // initApiConfig(auth.getAuthResponse().access_token);
+    this.auth = auth.getAuthResponse();
+    initApiConfig(auth.getAuthResponse().id_token);
   }
 
   @action.bound
