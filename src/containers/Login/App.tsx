@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Redirect } from 'react-router';
 
+import routes from 'constants/routes';
 import { Button } from 'components/common';
 import { useStore } from 'store';
-import routes from 'constants/routes';
 
 import { LoginContainer } from './style';
 
@@ -15,7 +15,7 @@ const Login = observer(() => {
     authStore.loadOAuth();
   }, []);
 
-  if (authStore.auth) {
+  if (authStore.authUser) {
     return <Redirect to={routes.dashboard} />;
   }
 

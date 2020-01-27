@@ -16,14 +16,14 @@ const Dashboard = observer(() => {
   ]);
 
   useEffect(() => {
-    if (!authStore.auth) {
+    if (!authStore.authUser) {
       return;
     }
 
     merchantStore.getMerchant();
-  }, [authStore.auth]);
+  }, [authStore.authUser]);
 
-  if (!authStore.auth) {
+  if (!authStore.authUser) {
     return <Redirect to={routes.login} />;
   }
 

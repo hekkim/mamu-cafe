@@ -1,8 +1,10 @@
 /* global gapi */
-import { action, observable } from 'mobx';
+import { action, observable, flow } from 'mobx';
 
-import { ActionStatus } from 'types/ActionStatus';
 import { initApiConfig } from 'apis/config';
+import { postUserLogin, PostUserLoginParams } from 'apis/users';
+import { ActionStatus } from 'types/ActionStatus';
+import { AuthUser } from 'types/User';
 
 import ApiStore from './api.store';
 
@@ -20,7 +22,7 @@ type OAuth = {
 };
 
 class AuthStore extends ApiStore {
-  @observable auth: gapi.auth2.AuthResponse | null = null;
+  @observable authUser: AuthUser | null = null;
 
   @observable oAuth: OAuth = {
     scriptStatus: ActionStatus.Initial,
@@ -75,22 +77,37 @@ class AuthStore extends ApiStore {
 
   @action.bound
   initAuth(auth: gapi.auth2.GoogleUser) {
-    this.status = ActionStatus.Success;
-    this.auth = auth.getAuthResponse();
-    initApiConfig(auth.getAuthResponse().id_token);
+    const { id_token } = auth.getAuthResponse();
+    this.getUserInfo({ id_token });
   }
 
   @action.bound
+  getUserInfo = flow(function*(this: AuthStore, params: PostUserLoginParams) {
+    this.status = ActionStatus.Request;
+    try {
+      this.authUser = yield postUserLogin(params);
+      this.status = ActionStatus.Success;
+      initApiConfig(params.id_token);
+    } catch (error) {
+      this.authError();
+    }
+  });
+
+  @action.bound
   signOut() {
-    this.auth = null;
-    this.status = ActionStatus.Failure;
+    this.authUser = null;
+    this.status = ActionStatus.Initial;
     initApiConfig(null);
   }
 
   @action.bound
-  authError(error: OAuthError) {
-    this.auth = null;
-    this.oAuth.error = error;
+  authError(error?: OAuthError) {
+    this.authUser = null;
+    this.status = ActionStatus.Failure;
+
+    if (error) {
+      this.oAuth.error = error;
+    }
   }
 }
 
