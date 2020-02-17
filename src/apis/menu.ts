@@ -1,12 +1,16 @@
 import axios from 'axios';
 
+import { menues } from 'constants/mocks';
 import { Merchant } from 'types/Merchant';
 import { Menu } from 'types/Menu';
 
 const BASE_URL = '/api/v1/merchants/';
 
 export const getMenuList = (merchantId: Merchant['id']) =>
-  axios.get(`${BASE_URL}${merchantId}/menus/`).then(response => response.data);
+  // axios.get(`${BASE_URL}${merchantId}/menus/`).then(response => response.data);
+  new Promise(resolve => {
+    setTimeout(resolve(menues), 1000);
+  });
 
 export type PostMenuParams = Pick<Menu, 'name' | 'price' | 'currency'>;
 

@@ -4,11 +4,13 @@ import { useLocalStore } from 'mobx-react';
 
 import AuthStore from './auth.store';
 import OrderStore from './order.store';
+import MenuStore from './menu.store';
 import MerchantStore from './merchant.store';
 
 export type RootStore = {
   auth: AuthStore;
   merchant: MerchantStore;
+  menu: MenuStore;
   order: OrderStore;
 };
 
@@ -21,6 +23,7 @@ const initRootStore = (): RootStore => {
 
   rootStore.auth = new AuthStore(rootStore);
   rootStore.merchant = new MerchantStore(rootStore);
+  rootStore.menu = new MenuStore(rootStore);
   rootStore.order = new OrderStore(rootStore);
 
   return rootStore;

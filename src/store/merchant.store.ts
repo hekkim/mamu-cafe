@@ -17,7 +17,7 @@ class MerchantStore extends ApiStore {
 
     try {
       this.onRequest();
-      const data = yield getMerchant(1);
+      this.merchant = yield getMerchant(1);
       this.onSuccess();
     } catch (error) {
       this.onFailure();

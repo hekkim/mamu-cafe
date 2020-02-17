@@ -15,10 +15,15 @@ class MenuStore extends ApiStore {
       return;
     }
 
+    const { merchant } = this.rootStore.merchant;
+
+    if (!merchant) {
+      return;
+    }
+
     try {
       this.onRequest();
-      const { id: merchantId } = this.rootStore.merchant;
-      this.menuList = yield getMenuList(merchantId);
+      this.menuList = yield getMenuList(merchant.id);
 
       this.onSuccess();
     } catch (error) {
