@@ -15,6 +15,11 @@ type OAuthError = {
   details: string;
 };
 
+type Tokens = {
+  refresh: string;
+  access: string;
+};
+
 type OAuth = {
   scriptStatus: ActionStatus;
   authInst?: gapi.auth2.GoogleAuth;
@@ -24,12 +29,14 @@ type OAuth = {
 class AuthStore extends ApiStore {
   @observable authUser: AuthUser | null = null;
 
+  @observable tokens: Token | null = null;
+
   @observable oAuth: OAuth = {
     scriptStatus: ActionStatus.Initial,
   };
 
   constructor(rootStore: RootStore) {
-    super();
+    super(rootStore);
     this.rootStore = rootStore;
   }
 
@@ -70,9 +77,10 @@ class AuthStore extends ApiStore {
 
   @action.bound
   signIn() {
-    if (this.oAuth.authInst) {
-      this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
-    }
+    // if (this.oAuth.authInst) {
+    //   this.oAuth.authInst.signIn().then(this.initAuth, this.authError);
+    // }
+    this.getUserInfo({ id_token: 'id_token' });
   }
 
   @action.bound
@@ -85,7 +93,9 @@ class AuthStore extends ApiStore {
   getUserInfo = flow(function*(this: AuthStore, params: PostUserLoginParams) {
     this.status = ActionStatus.Request;
     try {
-      this.authUser = yield postUserLogin(params);
+      const { user_info, ...tokens } = yield postUserLogin(params);
+      this.authUser = user_info;
+      this.tokens = tokens;
       this.status = ActionStatus.Success;
       initApiConfig(params.id_token);
     } catch (error) {

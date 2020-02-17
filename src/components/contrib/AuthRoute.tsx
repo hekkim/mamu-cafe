@@ -15,7 +15,7 @@ const AuthRoute: FC<Props> = observer(
       <Route
         {...routeProps}
         render={props =>
-          authStore.auth && Component ? (
+          authStore.authUser && Component ? (
             <Component {...props} />
           ) : (
             <Redirect

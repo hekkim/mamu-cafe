@@ -12,7 +12,7 @@ const Login = observer(() => {
   const authStore = useStore('auth');
 
   useEffect(() => {
-    authStore.loadOAuth();
+    // authStore.loadOAuth();
   }, []);
 
   if (authStore.authUser) {
